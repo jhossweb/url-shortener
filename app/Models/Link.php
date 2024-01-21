@@ -10,5 +10,5 @@ class Link extends Model
     use HasFactory;
 
     protected $fillable = ["long_url", "short_url", "description"];
-    protected $dateFormat = 'Ymd H:i:s';
+    // protected $dateFormat = 'Ymd H:i:s';
 }

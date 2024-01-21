@@ -40,7 +40,7 @@
 
 	</section>
 
-	<section class="col-md-8 mt-5">
+	<section class="mx-auto col-md-8 mt-5">
 		<div class="row">
 			<div class="card">
 				<div class="card-header">
@@ -48,12 +48,27 @@
 				</div>
 				@foreach($links as $link)
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item"> 
-							<p cla> 
+						<li class="d-flex justify-content-around align-items-center list-group-item text-center"> 
+							<div class="p-3">
 								Short Url: <strong> <a href="{{ route('short.search', $link->short_url) }}"> {{ $link->short_url }}  </a> </strong> 
+							</div>
+							<div class="p-3">
 								Description: <strong> {{ $link->description }}  </strong> 
-							</p>
-							
+							</div>
+							<div class="p-3">
+								<a href="" class="btn btn-primary" id="{{ $link->id }}">
+									Clicks
+									<span class="badge badge-light">{{ $link->click_count }}</span>
+								</a>
+							</div>
+							<div class="p-3">
+								<form action="{{ route('short.delete', $link) }}" method="POST">
+
+									@csrf
+									@method('delete')
+									<button class="btn btn-danger" type="submit"> Delete </button>
+								</form>
+							</div>
 						</li>
 					</ul>
 				@endforeach

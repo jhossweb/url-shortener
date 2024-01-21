@@ -15,8 +15,9 @@ use App\Http\Controllers\LinkController;
 */
 
 
-Route::get("/", [LinkController::class,'index']);
+Route::get("/", [LinkController::class,'index'])->name("short.index");
 Route::post("/", [LinkController::class,'store'])->name("short.store");
 Route::get("/{short}", [LinkController::class, 'searchShort'])
 		->where('short', '.*')
 		->name("short.search");
+Route::delete('/delete/{link}', [LinkController::class, 'deleteShort'])->name("short.delete");

@@ -29,9 +29,10 @@ class LinkController extends Controller
     }
 
     function searchShort ($short) {
-  		var_dump($short);
+  		
     	$link = Link::where("short_url", $short)->first();
-		
+		$link->increment('click_count');
+
 		if(!$link) return '404';    	
 
 		return redirect($link->long_url);
