@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LinkRequest extends FormRequest
+class LoginUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,8 @@ class LinkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "long_url" => "required|url",
-            "description" => "required",
-            "user_id" => "required"
+            "email" => "required",
+            "password" => "required"
         ];
     }
 }

@@ -5,23 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use App\Http\Requests\LinkRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use App\Models\Link;
 
 class LinkController extends Controller
 {
+	function __construct() 
+	{
+		$this->middleware('auth');	
+	}
+
     function index () {
-    	$links = Link::all();
+    	$links = Link::where('user_id', auth()->user()->id)->get();
     	return view('shorts.index', compact('links'));
     }
 
     function store(LinkRequest $req) {
-    	
-    	$shortUrl = 'jhossweb/' . Str::random(4);
+		$shortUrl = 'jhossweb/' . Str::random(4);
     	$link = [
     		"long_url" => $req->long_url,
     		"short_url" => $shortUrl,
-    		"description" => $req->description
+    		"description" => $req->description,
+			"user_id" => $req->user_id
     	];
+    	var_dump($link);
 
     	Link::create($link);
 
@@ -34,7 +41,7 @@ class LinkController extends Controller
 		$link->increment('click_count');
 
 		if(!$link) return '404';    	
-
+        
 		return redirect($link->long_url);
     }
 }

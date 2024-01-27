@@ -1,2 +1,2 @@
-
+import './link.click.js'
 
