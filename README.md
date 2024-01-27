@@ -1,3 +1,28 @@
+## Detalles del proyecto
+<p>
+	El proyecto hace uso de:
+</p>
+
+	1. MySql
+	2. Relaciones
+	3. Sistema de Login (sin paquetes adicionales)
+	 
+
+# Obtener proyecto
+<p>
+	Para poder hacer uso de este proyecto, debes clonar el repositorio y configurar el archivo *.env*. 
+    Debes agregar las credenciales a la conexión a la base de datos a usar.
+</p>
+
+## Ejecutar migraciones
+<p>
+    Para crear las tablas en la base de datos, solo debes ejecutar:
+</p>
+
+```
+php artisan migrate
+```
+
 ## A tener en cuenta
 <p>
 	En este proyecto se está usando Sql Server. Al manejar las fechas es algo distinto que en MySql. Puede que salga el siguiente error.
